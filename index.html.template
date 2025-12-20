@@ -12,7 +12,7 @@
   <body>
     <main>
       {CONTENT_GOES_HERE}
-      <script src="/page.js"></script>
+      <script type="module" src="/page.js"></script>
     </main>
   </body>
 </html>

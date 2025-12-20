@@ -58,8 +58,8 @@ fn runnable(code: &str) -> String {
             {code_str}
             <div class='actions'>
                 <button type='button' class='run'>Run</button>
-                <button type='button' class='run'>Lower</button>
-                <button type='button' class='run'>Format</button>
+                <button type='button' class='lower'>Lower</button>
+                <button type='button' class='format'>Format</button>
             </div>
         </div>"
     )
