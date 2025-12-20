@@ -1,0 +1,151 @@
+:root {
+  --color-tin-1: rgb(9.71% 9.82% 12.9%);
+  --color-tin-1-contrast: #fff;
+  --color-tin-2: rgb(26% 24% 31%);
+  --color-tin-2-contrast: #fff;
+  --color-tin-3: rgb(29.5% 29.8% 40.8%);
+  --color-tin-3-contrast: #fff;
+  --color-tin-4: rgb(19.9% 31.3% 43.2%);
+  --color-tin-4-contrast: #fff;
+  --color-tin-5: rgb(4.77% 35.5% 44%);
+  --color-tin-5-contrast: #fff;
+  --color-tin-6: rgb(2.86% 49% 55.5%);
+  --color-tin-6-contrast: #fff;
+  --color-tin-7: rgb(39.8% 77.1% 83.5%);
+  --color-tin-7-contrast: #000;
+  --color-tin-8: rgb(65.6% 95.7% 100%);
+  --color-tin-8-contrast: #000;
+  --color-tin-9: rgb(74.7% 98.4% 100%);
+  --color-tin-9-contrast: #000;
+  --color-tin-10: rgb(80.6% 96.7% 100%);
+  --color-tin-10-contrast: #000;
+  --color-tin-11: rgb(87.7% 94.4% 100%);
+  --color-tin-11-contrast: #000;
+  --color-tin-12: rgb(82.1% 82.3% 86.7%);
+  --color-tin-12-contrast: #000;
+}
+
+html {
+  background: var(--color-tin-1);
+  color: oklch(96.816% 0.00355 220.931);
+  font-family: "Fira Code", monospace;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  max-width: 80ex;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 200;
+  margin: 1rem;
+}
+
+h1 {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: oklch(66.7% 0.274 260);
+}
+
+p {
+  margin: 1rem;
+}
+
+pre,
+code {
+  font-family: "Fira Code", monospace;
+  font-weight: 200;
+  font-style: normal;
+  color: oklch(96.816% 0.00355 220.931);
+}
+
+pre {
+  padding: 2ex 2ex 0 2ex;
+  margin-bottom: 1ex;
+  tab-size: 2;
+}
+
+pre .function {
+  color: var(--color-tin-8);
+}
+
+pre .keyword {
+  color: oklch(62.3% 0.175 12);
+}
+
+pre .number {
+  color: oklch(95% 0.145 54.5);
+}
+
+pre .comment {
+  color: var(--color-tin-4);
+}
+
+pre .string {
+  color: oklch(95% 0.38 253);
+}
+
+pre .type {
+  color: oklch(88.6% 0.119 286);
+}
+
+.runnable {
+  background: rgb(13, 13, 17);
+}
+
+.runnable .actions {
+  background: rgb(13, 13, 17);
+  padding: 0 2ex 2ex 2ex;
+  color: var(--color-tin-3);
+  font-size: small;
+}
+
+.runnable .actions {
+  display: flex;
+  gap: 2rex;
+}
+
+.runnable button {
+  flex-grow: 1;
+  display: inline-block;
+  border: none;
+  color: white;
+  background: var(--color-tin-2);
+  cursor: pointer;
+}
+
+.runnable button {
+  display: inline-block;
+  border: none;
+  color: white;
+  background: rgb(30, 28, 36);
+  cursor: pointer;
+  font-weight: 100;
+  font-size: x-small;
+  padding: 0.6rex 1rex;
+}
+
+.runnable button:hover {
+  display: inline-block;
+  border: none;
+  color: white;
+  background: rgb(39, 36, 48);
+  cursor: pointer;
+}
+
+.runnable button:active {
+  display: inline-block;
+  border: none;
+  color: white;
+  background: rgb(27, 25, 33);
+  cursor: pointer;
+}

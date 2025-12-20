@@ -1,0 +1,145 @@
+<html>
+  <meta charset="utf-8">
+  <meta content="text/html" charset="UTF-8" http-equiv="Content-Type">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+    <link href="/reset.css" rel="stylesheet">
+    <link href="/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <main>
+      <h1>talk talk</h1>
+<p><span style="color: white;">talk talk</span> is a programming language. It kind of looks like Swift or Rust or Go if you squint.</p>
+<p>It has some types you may have heard of before.</p>
+<div class='runnable'>
+            <pre class='editable'><span class="number">123</span>               <span class="comment">// Ints</span>
+<span class="number">1.23</span>              <span class="comment">// Floats</span>
+<span class="keyword">true</span>              <span class="comment">// Booleans</span>
+<span class="string">"Hello 🗿"</span>        <span class="comment">// Strings</span>
+[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]         <span class="comment">// Arrays</span>
+(<span class="keyword">true</span>, <span class="number">123</span>)       <span class="comment">// Tuples?</span>
+{ fizz: <span class="string">"buzz"</span> }  <span class="comment">// Records??</span>
+</pre>
+            <div class='actions'>
+                <button type='button' class='run'>Run</button>
+                <button type='button' class='run'>Lower</button>
+                <button type='button' class='run'>Format</button>
+            </div>
+        </div>
+<p>Here, have some arithmetic.</p>
+<div class='runnable'>
+            <pre class='editable'><span class="number">2</span> <span class="operator">*</span> <span class="number">3</span> <span class="operator">+</span> <span class="number">4</span> <span class="operator">/</span> <span class="number">2</span> <span class="comment">// I can't do this in my head</span>
+</pre>
+            <div class='actions'>
+                <button type='button' class='run'>Run</button>
+                <button type='button' class='run'>Lower</button>
+                <button type='button' class='run'>Format</button>
+            </div>
+        </div>
+<p>Maybe you like assigning things. Like a variable?</p>
+<div class='runnable'>
+            <pre class='editable'><span class="keyword">let</span> a <span class="operator">=</span> <span class="number">1</span>
+<span class="keyword">let</span> b <span class="operator">=</span> <span class="number">2</span>
+<span class="keyword">let</span> c <span class="operator">=</span> a <span class="operator">+</span> b
+<span class="variable">c</span> <span class="comment">// =&gt; 3</span>
+</pre>
+            <div class='actions'>
+                <button type='button' class='run'>Run</button>
+                <button type='button' class='run'>Lower</button>
+                <button type='button' class='run'>Format</button>
+            </div>
+        </div>
+<p>Here’s how functions look to define and call.</p>
+<div class='runnable'>
+            <pre class='editable'><span class="keyword">func</span> <span class="function">add</span>(<span class="parameter">x</span>) {
+	x <span class="operator">+</span> <span class="number">1</span>
+}
+
+add(<span class="number">1</span>) <span class="comment">// =&gt; 2 Wow. Imagine that</span>
+</pre>
+            <div class='actions'>
+                <button type='button' class='run'>Run</button>
+                <button type='button' class='run'>Lower</button>
+                <button type='button' class='run'>Format</button>
+            </div>
+        </div>
+<p>Maybe you like types? You can specify them if you want.</p>
+<div class='runnable'>
+            <pre class='editable'><span class="keyword">let</span> a: <span class="type">Int</span> <span class="operator">=</span> <span class="number">1</span>
+<span class="keyword">let</span> b: <span class="type">Float</span> <span class="operator">=</span> <span class="number">2.0</span>
+<span class="keyword">let</span> c <span class="operator">=</span> a <span class="operator">+</span> b <span class="comment">// Uh oh, type error!</span>
+</pre>
+            <div class='actions'>
+                <button type='button' class='run'>Run</button>
+                <button type='button' class='run'>Lower</button>
+                <button type='button' class='run'>Format</button>
+            </div>
+        </div>
+<p>They’ll be checked. Otherwise talk talk tries to infer everything. Including generics.</p>
+<div class='runnable'>
+            <pre class='editable'><span class="keyword">func</span> <span class="function">identity</span>(<span class="parameter">x</span>) { x }
+identity(<span class="number">1.23</span>) <span class="comment">// =&gt; 1.23 (Float)</span>
+identity(<span class="keyword">true</span>) <span class="comment">// =&gt; true (Bool)</span>
+</pre>
+            <div class='actions'>
+                <button type='button' class='run'>Run</button>
+                <button type='button' class='run'>Lower</button>
+                <button type='button' class='run'>Format</button>
+            </div>
+        </div>
+<p>You could write the function above explicitly too.</p>
+<div class='runnable'>
+            <pre class='editable'><span class="comment">// it's good to be explicit sometimes</span>
+<span class="keyword">func</span> <span class="function">identity</span><span class="operator">&lt;</span>T<span class="operator">&gt;</span>(<span class="parameter">x</span>: <span class="type">T</span>) { x }
+</pre>
+            <div class='actions'>
+                <button type='button' class='run'>Run</button>
+                <button type='button' class='run'>Lower</button>
+                <button type='button' class='run'>Format</button>
+            </div>
+        </div>
+<p>Maybe you like structs in other languages. talktalk has those.</p>
+<div class='runnable'>
+            <pre class='editable'><span class="keyword">struct</span> <span class="type">Person</span> {
+    <span class="keyword">let</span> name: String
+
+    <span class="keyword">func</span> greet() {
+        <span class="comment">// Strings can be concat'd</span>
+        print(<span class="string">"hey, i'm "</span> <span class="operator">+</span> self.name)
+    }
+}
+
+Person(name: <span class="string">"Pat"</span>).greet()
+</pre>
+            <div class='actions'>
+                <button type='button' class='run'>Run</button>
+                <button type='button' class='run'>Lower</button>
+                <button type='button' class='run'>Format</button>
+            </div>
+        </div>
+<p>We've got sum types too:</p>
+<div class='runnable'>
+            <pre class='editable'><span class="keyword">enum</span> <span class="type">Response</span> {
+    <span class="keyword">case</span> ok(String), redirect(String), other(Int)
+}
+
+<span class="keyword">let</span> response <span class="operator">=</span> <span class="keyword">match</span> Response.ok(<span class="string">"It's cool"</span>) {
+    .ok(data) <span class="keyword">-&gt;</span> print(data),
+    .redirect(location) <span class="keyword">-&gt;</span> print(<span class="string">"redirect "</span> <span class="operator">+</span> location),
+    .other(code) <span class="keyword">-&gt;</span> print(code)
+}
+</pre>
+            <div class='actions'>
+                <button type='button' class='run'>Run</button>
+                <button type='button' class='run'>Lower</button>
+                <button type='button' class='run'>Format</button>
+            </div>
+        </div>
+
+      <script src="/page.js"></script>
+    </main>
+  </body>
+</html>
