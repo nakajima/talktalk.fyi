@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
     <link href="/reset.css" rel="stylesheet">
-    <link href="/style.css" rel="stylesheet">
+    	<link href="/style.css" rel="stylesheet">
   </head>
   <body>
     <main>
@@ -15,95 +15,135 @@
 <p><span style="color: white;">talk talk</span> is a programming language. It kind of looks like Swift or Rust or Go if you squint.</p>
 <p>It has some types you may have heard of before.</p>
 <div class='runnable'>
-            <pre class='editable'><span class="number">123</span>               <span class="comment">// Ints</span>
+            <div class='code-block'>
+                <pre class='code-highlight' aria-hidden='true'><span class="number">123</span>               <span class="comment">// Ints</span>
 <span class="number">1.23</span>              <span class="comment">// Floats</span>
 <span class="keyword">true</span>              <span class="comment">// Booleans</span>
 <span class="string">"Hello 🗿"</span>        <span class="comment">// Strings</span>
 [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]         <span class="comment">// Arrays</span>
 (<span class="keyword">true</span>, <span class="number">123</span>)       <span class="comment">// Tuples?</span>
-{ fizz: <span class="string">"buzz"</span> }  <span class="comment">// Records??</span>
-</pre>
+{ fizz: <span class="string">"buzz"</span> }  <span class="comment">// Records??</span></pre>
+                <textarea class='code-editable' rows='7' spellcheck='false' autocapitalize='off' autocorrect='off' autocomplete='off' wrap='off'>123               // Ints
+1.23              // Floats
+true              // Booleans
+&quot;Hello 🗿&quot;        // Strings
+[1, 2, 3]         // Arrays
+(true, 123)       // Tuples?
+{ fizz: &quot;buzz&quot; }  // Records??</textarea>
+            </div>
             <div class='actions'>
                 <button type='button' class='run'>Run</button>
                 <button type='button' class='lower'>Lower</button>
                 <button type='button' class='format'>Format</button>
             </div>
+            <div class='result'></div>
         </div>
 <p>Here, have some arithmetic.</p>
 <div class='runnable'>
-            <pre class='editable'><span class="number">2</span> <span class="operator">*</span> <span class="number">3</span> <span class="operator">+</span> <span class="number">4</span> <span class="operator">/</span> <span class="number">2</span> <span class="comment">// I can't do this in my head</span>
-</pre>
+            <div class='code-block'>
+                <pre class='code-highlight' aria-hidden='true'><span class="number">2</span> <span class="operator">*</span> <span class="number">3</span> <span class="operator">+</span> <span class="number">4</span> <span class="operator">/</span> <span class="number">2</span> <span class="comment">// I can't do this in my head</span></pre>
+                <textarea class='code-editable' rows='1' spellcheck='false' autocapitalize='off' autocorrect='off' autocomplete='off' wrap='off'>2 * 3 + 4 / 2 // I can&#39;t do this in my head</textarea>
+            </div>
             <div class='actions'>
                 <button type='button' class='run'>Run</button>
                 <button type='button' class='lower'>Lower</button>
                 <button type='button' class='format'>Format</button>
             </div>
+            <div class='result'></div>
         </div>
 <p>Maybe you like assigning things. Like a variable?</p>
 <div class='runnable'>
-            <pre class='editable'><span class="keyword">let</span> a <span class="operator">=</span> <span class="number">1</span>
+            <div class='code-block'>
+                <pre class='code-highlight' aria-hidden='true'><span class="keyword">let</span> a <span class="operator">=</span> <span class="number">1</span>
 <span class="keyword">let</span> b <span class="operator">=</span> <span class="number">2</span>
 <span class="keyword">let</span> c <span class="operator">=</span> a <span class="operator">+</span> b
-<span class="variable">c</span> <span class="comment">// =&gt; 3</span>
-</pre>
+<span class="variable">c</span> <span class="comment">// =&gt; 3</span></pre>
+                <textarea class='code-editable' rows='4' spellcheck='false' autocapitalize='off' autocorrect='off' autocomplete='off' wrap='off'>let a = 1
+let b = 2
+let c = a + b
+c // =&gt; 3</textarea>
+            </div>
             <div class='actions'>
                 <button type='button' class='run'>Run</button>
                 <button type='button' class='lower'>Lower</button>
                 <button type='button' class='format'>Format</button>
             </div>
+            <div class='result'></div>
         </div>
 <p>Here’s how functions look to define and call.</p>
 <div class='runnable'>
-            <pre class='editable'><span class="keyword">func</span> <span class="function">add</span>(<span class="parameter">x</span>) {
+            <div class='code-block'>
+                <pre class='code-highlight' aria-hidden='true'><span class="keyword">func</span> <span class="function">add</span>(<span class="parameter">x</span>) {
 	x <span class="operator">+</span> <span class="number">1</span>
 }
 
-add(<span class="number">1</span>) <span class="comment">// =&gt; 2 Wow. Imagine that</span>
-</pre>
+add(<span class="number">1</span>) <span class="comment">// =&gt; 2 Wow. Imagine that</span></pre>
+                <textarea class='code-editable' rows='5' spellcheck='false' autocapitalize='off' autocorrect='off' autocomplete='off' wrap='off'>func add(x) {
+	x + 1
+}
+
+add(1) // =&gt; 2 Wow. Imagine that</textarea>
+            </div>
             <div class='actions'>
                 <button type='button' class='run'>Run</button>
                 <button type='button' class='lower'>Lower</button>
                 <button type='button' class='format'>Format</button>
             </div>
+            <div class='result'></div>
         </div>
 <p>Maybe you like types? You can specify them if you want.</p>
 <div class='runnable'>
-            <pre class='editable'><span class="keyword">let</span> a: <span class="type">Int</span> <span class="operator">=</span> <span class="number">1</span>
+            <div class='code-block'>
+                <pre class='code-highlight' aria-hidden='true'><span class="keyword">let</span> a: <span class="type">Int</span> <span class="operator">=</span> <span class="number">1</span>
 <span class="keyword">let</span> b: <span class="type">Float</span> <span class="operator">=</span> <span class="number">2.0</span>
-<span class="keyword">let</span> c <span class="operator">=</span> a <span class="operator">+</span> b <span class="comment">// Uh oh, type error!</span>
-</pre>
+<span class="keyword">let</span> c <span class="operator">=</span> a <span class="operator">+</span> b <span class="comment">// Uh oh, type error!</span></pre>
+                <textarea class='code-editable' rows='3' spellcheck='false' autocapitalize='off' autocorrect='off' autocomplete='off' wrap='off'>let a: Int = 1
+let b: Float = 2.0
+let c = a + b // Uh oh, type error!</textarea>
+            </div>
             <div class='actions'>
                 <button type='button' class='run'>Run</button>
                 <button type='button' class='lower'>Lower</button>
                 <button type='button' class='format'>Format</button>
             </div>
+            <div class='result'></div>
         </div>
 <p>They’ll be checked. Otherwise talk talk tries to infer everything. Including generics.</p>
 <div class='runnable'>
-            <pre class='editable'><span class="keyword">func</span> <span class="function">identity</span>(<span class="parameter">x</span>) { x }
+            <div class='code-block'>
+                <pre class='code-highlight' aria-hidden='true'><span class="keyword">func</span> <span class="function">identity</span>(<span class="parameter">x</span>) { x }
 identity(<span class="number">1.23</span>) <span class="comment">// =&gt; 1.23 (Float)</span>
-identity(<span class="keyword">true</span>) <span class="comment">// =&gt; true (Bool)</span>
-</pre>
+identity(<span class="keyword">true</span>) <span class="comment">// =&gt; true (Bool)</span></pre>
+                <textarea class='code-editable' rows='3' spellcheck='false' autocapitalize='off' autocorrect='off' autocomplete='off' wrap='off'>func identity(x) { x }
+identity(1.23) // =&gt; 1.23 (Float)
+identity(true) // =&gt; true (Bool)</textarea>
+            </div>
             <div class='actions'>
                 <button type='button' class='run'>Run</button>
                 <button type='button' class='lower'>Lower</button>
                 <button type='button' class='format'>Format</button>
             </div>
+            <div class='result'></div>
         </div>
 <p>You could write the function above explicitly too.</p>
 <div class='runnable'>
-            <pre class='editable'><span class="comment">// it's good to be explicit sometimes</span>
-<span class="keyword">func</span> <span class="function">identity</span><span class="operator">&lt;</span>T<span class="operator">&gt;</span>(<span class="parameter">x</span>: <span class="type">T</span>) { x }
-</pre>
+            <div class='code-block'>
+                <pre class='code-highlight' aria-hidden='true'><span class="comment">// it's good to be explicit sometimes</span>
+<span class="keyword">func</span> <span class="function">identity</span><span class="operator">&lt;</span>T<span class="operator">&gt;</span>(<span class="parameter">x</span>: <span class="type">T</span>) { x }</pre>
+                <textarea class='code-editable' rows='2' spellcheck='false' autocapitalize='off' autocorrect='off' autocomplete='off' wrap='off'>// it&#39;s good to be explicit sometimes
+func identity&lt;T&gt;(x: T) { x }</textarea>
+            </div>
             <div class='actions'>
                 <button type='button' class='run'>Run</button>
                 <button type='button' class='lower'>Lower</button>
                 <button type='button' class='format'>Format</button>
             </div>
+            <div class='result'></div>
         </div>
 <p>Maybe you like structs in other languages. talktalk has those.</p>
 <div class='runnable'>
-            <pre class='editable'><span class="keyword">struct</span> <span class="type">Person</span> {
+            <div class='code-block'>
+                <pre class='code-highlight' aria-hidden='true'><span class="keyword">struct</span> <span class="type">Person</span> {
     <span class="keyword">let</span> name: String
 
     <span class="keyword">func</span> greet() {
@@ -112,17 +152,29 @@ identity(<span class="keyword">true</span>) <span class="comment">// =&gt; true 
     }
 }
 
-Person(name: <span class="string">"Pat"</span>).greet()
-</pre>
+Person(name: <span class="string">"Pat"</span>).greet()</pre>
+                <textarea class='code-editable' rows='10' spellcheck='false' autocapitalize='off' autocorrect='off' autocomplete='off' wrap='off'>struct Person {
+    let name: String
+
+    func greet() {
+        // Strings can be concat&#39;d
+        print(&quot;hey, i&#39;m &quot; + self.name)
+    }
+}
+
+Person(name: &quot;Pat&quot;).greet()</textarea>
+            </div>
             <div class='actions'>
                 <button type='button' class='run'>Run</button>
                 <button type='button' class='lower'>Lower</button>
                 <button type='button' class='format'>Format</button>
             </div>
+            <div class='result'></div>
         </div>
 <p>We've got sum types too:</p>
 <div class='runnable'>
-            <pre class='editable'><span class="keyword">enum</span> <span class="type">Response</span> {
+            <div class='code-block'>
+                <pre class='code-highlight' aria-hidden='true'><span class="keyword">enum</span> <span class="type">Response</span> {
     <span class="keyword">case</span> ok(String), redirect(String), other(Int)
 }
 
@@ -130,16 +182,27 @@ Person(name: <span class="string">"Pat"</span>).greet()
     .ok(data) <span class="keyword">-&gt;</span> print(data),
     .redirect(location) <span class="keyword">-&gt;</span> print(<span class="string">"redirect "</span> <span class="operator">+</span> location),
     .other(code) <span class="keyword">-&gt;</span> print(code)
+}</pre>
+                <textarea class='code-editable' rows='9' spellcheck='false' autocapitalize='off' autocorrect='off' autocomplete='off' wrap='off'>enum Response {
+    case ok(String), redirect(String), other(Int)
 }
-</pre>
+
+let response = match Response.ok(&quot;It&#39;s cool&quot;) {
+    .ok(data) -&gt; print(data),
+    .redirect(location) -&gt; print(&quot;redirect &quot; + location),
+    .other(code) -&gt; print(code)
+}</textarea>
+            </div>
             <div class='actions'>
                 <button type='button' class='run'>Run</button>
                 <button type='button' class='lower'>Lower</button>
                 <button type='button' class='format'>Format</button>
             </div>
+            <div class='result'></div>
         </div>
 
       <script type="module" src="/page.js"></script>
     </main>
   </body>
 </html>
+

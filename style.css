@@ -61,16 +61,18 @@ p {
 }
 
 pre,
-code {
+code,
+.code-editable {
   font-family: "Fira Code", monospace;
   font-weight: 200;
   font-style: normal;
   color: oklch(96.816% 0.00355 220.931);
 }
 
-pre {
+pre,
+.code-editable {
   padding: 2ex 2ex 0 2ex;
-  margin-bottom: 1ex;
+  margin: 0;
   tab-size: 2;
 }
 
@@ -100,11 +102,51 @@ pre .type {
 
 .runnable {
   background: rgb(13, 13, 17);
+  position: relative;
+  margin: 1rem;
+}
+
+.runnable .code-block {
+  position: relative;
+}
+
+.runnable .code-highlight,
+.runnable .code-editable {
+  box-sizing: border-box;
+  display: block;
+  line-height: 1.5;
+  white-space: pre;
+  width: 100%;
+}
+
+.runnable .code-highlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.runnable .code-editable {
+  position: relative;
+  color: transparent;
+  background: transparent;
+  border: none;
+  caret-color: oklch(96.816% 0.00355 220.931);
+  z-index: 1;
+  outline: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  resize: none;
+}
+
+.runnable .code-editable::selection {
+  background: rgba(255, 255, 255, 0.2);
+  color: transparent;
 }
 
 .runnable .actions {
   background: rgb(13, 13, 17);
-  padding: 0 2ex 2ex 2ex;
+  padding: 1ex 2ex 2ex 2ex;
   color: var(--color-tin-3);
   font-size: small;
 }
@@ -148,4 +190,8 @@ pre .type {
   color: white;
   background: rgb(27, 25, 33);
   cursor: pointer;
+}
+
+.runnable .output {
+  padding: 0 2rex 2rex 2rex;
 }

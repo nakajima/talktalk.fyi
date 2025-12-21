@@ -24,7 +24,32 @@ fn main() {
     println!("{result}");
 }
 
-fn highlight(code: &str, is_editable: bool) -> String {
+fn escape_html(value: &str) -> String {
+    let mut escaped = String::with_capacity(value.len());
+    for ch in value.chars() {
+        match ch {
+            '&' => escaped.push_str("&amp;"),
+            '<' => escaped.push_str("&lt;"),
+            '>' => escaped.push_str("&gt;"),
+            '"' => escaped.push_str("&quot;"),
+            '\'' => escaped.push_str("&#39;"),
+            _ => escaped.push(ch),
+        }
+    }
+    escaped
+}
+
+fn line_count(value: &str) -> usize {
+    let mut count = 1;
+    for ch in value.chars() {
+        if ch == '\n' {
+            count += 1;
+        }
+    }
+    count
+}
+
+fn highlight(code: &str) -> String {
     let mut child = std::process::Command::new("/home/nakajima/apps/talk/target/release/talk")
         .arg("html")
         .arg("-")
@@ -40,27 +65,27 @@ fn highlight(code: &str, is_editable: bool) -> String {
         .write_all(code.as_bytes())
         .unwrap();
     let output = child.wait_with_output().unwrap();
-
-    if is_editable {
-        format!(
-            "<pre class='editable'>{}</pre>",
-            String::from_utf8_lossy(&output.stdout)
-        )
-    } else {
-        format!("<pre>{}</pre>", String::from_utf8_lossy(&output.stdout))
-    }
+    let output = String::from_utf8_lossy(&output.stdout);
+    output.trim_end_matches(&['\n', '\r'][..]).to_string()
 }
 
 fn runnable(code: &str) -> String {
-    let code_str = highlight(code, true);
+    let code = code.trim_end_matches(&['\n', '\r'][..]);
+    let highlighted = highlight(code);
+    let raw = escape_html(code);
+    let rows = line_count(code);
     format!(
         "<div class='runnable'>
-            {code_str}
+            <div class='code-block'>
+                <pre class='code-highlight' aria-hidden='true'>{highlighted}</pre>
+                <textarea class='code-editable' rows='{rows}' spellcheck='false' autocapitalize='off' autocorrect='off' autocomplete='off' wrap='off'>{raw}</textarea>
+            </div>
             <div class='actions'>
                 <button type='button' class='run'>Run</button>
                 <button type='button' class='lower'>Lower</button>
                 <button type='button' class='format'>Format</button>
             </div>
+            <div class='result'></div>
         </div>"
     )
 }
@@ -74,7 +99,6 @@ fn replace_code_blocks<'a>(node: &'a AstNode<'a>) {
         let data = node.data.borrow();
         match &data.value {
             NodeValue::CodeBlock(block) => Some(block.literal.clone()),
-            NodeValue::Code(code) => Some(code.literal.clone()),
             _ => None,
         }
     };
@@ -82,7 +106,7 @@ fn replace_code_blocks<'a>(node: &'a AstNode<'a>) {
     if let Some(code) = code {
         node.data.borrow_mut().value = NodeValue::HtmlBlock(NodeHtmlBlock {
             block_type: 1,
-            literal: runnable(code.trim()),
+            literal: runnable(&code),
         });
     }
 }
