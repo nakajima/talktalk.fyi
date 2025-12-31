@@ -69,15 +69,37 @@ fn highlight(code: &str) -> String {
     output.trim_end_matches(&['\n', '\r'][..]).to_string()
 }
 
+fn format(code: &str) -> String {
+    let mut child = std::process::Command::new("/home/nakajima/apps/talk/target/release/talk")
+        .arg("format")
+        .arg("-")
+        .stdin(Stdio::piped())
+        .stdout(Stdio::piped())
+        .spawn()
+        .unwrap();
+
+    child
+        .stdin
+        .as_mut()
+        .unwrap()
+        .write_all(code.as_bytes())
+        .unwrap();
+    let output = child.wait_with_output().unwrap();
+    let output = String::from_utf8_lossy(&output.stdout);
+    output.trim_end_matches(&['\n', '\r'][..]).to_string()
+}
+
 fn runnable(code: &str) -> String {
     let code = code.trim_end_matches(&['\n', '\r'][..]);
-    let highlighted = highlight(code);
+    let formatted = format(code);
+    let highlighted = highlight(&formatted);
     let raw = escape_html(code);
     let rows = line_count(code);
     format!(
         "<div class='runnable'>
             <div class='code-block'>
                 <pre class='code-highlight' aria-hidden='true'>{highlighted}</pre>
+                <div class='code-diagnostics' aria-hidden='true'></div>
                 <textarea class='code-editable' rows='{rows}' spellcheck='false' autocapitalize='off' autocorrect='off' autocomplete='off' wrap='off'>{raw}</textarea>
             </div>
             <div class='actions'>
@@ -90,23 +112,34 @@ fn runnable(code: &str) -> String {
     )
 }
 
+fn norun(code: &str) -> String {
+    let code = code.trim_end_matches(&['\n', '\r'][..]);
+    let highlighted = highlight(code);
+    format!(
+        "<div class='code-block no-run'>
+            <pre class='code-highlight'>{highlighted}</pre>
+        </div>
+        "
+    )
+}
+
 fn replace_code_blocks<'a>(node: &'a AstNode<'a>) {
     for child in node.children() {
         replace_code_blocks(child);
     }
 
-    let code = {
-        let data = node.data.borrow();
-        match &data.value {
-            NodeValue::CodeBlock(block) => Some(block.literal.clone()),
-            _ => None,
+    let mut data = node.data.borrow_mut();
+    match &data.value {
+        NodeValue::CodeBlock(block) => {
+            data.value = NodeValue::HtmlBlock(NodeHtmlBlock {
+                block_type: 1,
+                literal: if block.info.contains("norun") {
+                    norun(&block.literal)
+                } else {
+                    runnable(&block.literal)
+                },
+            })
         }
+        _ => (),
     };
-
-    if let Some(code) = code {
-        node.data.borrow_mut().value = NodeValue::HtmlBlock(NodeHtmlBlock {
-            block_type: 1,
-            literal: runnable(&code),
-        });
-    }
 }
